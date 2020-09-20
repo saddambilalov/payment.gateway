@@ -24,6 +24,7 @@ docker-compose -f docker-compose.development.yml up --remove-orphans --force-rec
 
 ### [The API](https://github.com/saddambilalov/payment.gateway/tree/master/src/Api/Payment.Gateway.Api)
 The validation was implemented with [Fluent Validation](https://fluentvalidation.net/).
+
 **The sample query:**
 ```sh
 curl --location --request POST 'http://localhost:3015/api/PaymentGateway' \
