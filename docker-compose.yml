@@ -1,0 +1,46 @@
+version: "3.1"
+services:
+
+   payment_gateway.api:
+      container_name: payment_gateway.api
+      build:
+         context: .
+         dockerfile: src/Api/Payment.Gateway.Api/Dockerfile
+      environment:
+         - ASPNETCORE_ENVIRONMENT=Development
+         - Logging__LogLevel__Microsoft=Information
+         - PaymentGatewayDbSettings__ConnectionString=mongodb://payment_gateway.datastore
+         - Clients__Endpoint=http://bank_simulator:8080
+      ports:
+         - 3015:80
+      depends_on:
+         - payment_gateway.datastore
+         - bank_simulator
+      networks:
+         - payment_gateway_network
+
+   payment_gateway.datastore:
+      container_name: payment_gateway.datastore
+      image: mongo:4.2
+      volumes:
+      - payment_gateway_data:/data/db
+      restart: always
+      networks:
+         - payment_gateway_network
+
+   bank_simulator:
+      container_name: bank_simulator
+      build:
+        context: ./simulator/
+        dockerfile: Dockerfile
+      ports:
+          - 8080:8080
+      networks:
+         - payment_gateway_network
+
+volumes:
+  payment_gateway_data:
+
+networks:
+   payment_gateway_network:
+      driver: bridge
