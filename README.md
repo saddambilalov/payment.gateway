@@ -50,6 +50,8 @@ The most reliable authentication system can be OAuth or JWT standards. It can be
 
 The card details were encrypted before being written to the database. It was serialized using BinaryFormatter. **MongoDb** also supports [client-side encryption](https://docs.mongodb.com/manual/core/security-client-side-encryption/) but it is not a good practice to be dependent on the data store that created a tightly coupled system.
 
+In production, the encryption key can be protected with **[Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)** and passed as an environment variable.
+
 **[The Bank Simulator](https://github.com/saddambilalov/payment.gateway/tree/master/simulator)**
 
 It was implemented with Express.js to make the possible integration easy later.
