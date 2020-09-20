@@ -56,5 +56,6 @@ This layer contains the implementation of data persistence and repository.
 
 ## Note. There are some important cases left in order to be implemented in the future: ##
 1. Instead of feeding data from the external API, it can be better to have the publish/subscriber pattern. When something has changed on the show and cast side they can publish an event that will be executed by a subscription in the reading model. It can also be the same as the [CQRS](https://learning.oreilly.com/library/view/designing-event-driven-systems/9781492038252/ch07.html) implementation.
-2. The application was not covered with the unit tests as a whole due to the time limitation.
-3. And so on...
+2. The index is missing in MongoDB.
+3. The application was not covered with the unit tests as a whole due to the time limitation.
+4. And so on...
