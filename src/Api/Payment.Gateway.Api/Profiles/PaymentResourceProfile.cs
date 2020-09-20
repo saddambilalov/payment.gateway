@@ -33,10 +33,11 @@
                         src => $"xxxx-xxxx-xxxx-{src.CardNumber.Substring(src.CardNumber.Length - 4, 4)}"));
 
             CreateMap<Payment, PaymentResponse>()
-                .ForMember(dest => dest.TransactionId,
-                    opt => opt.MapFrom(src => src.BankPaymentResult.TransactionId))
                 .ForMember(dest => dest.PaymentStatus,
-                    opt => opt.MapFrom(src => src.BankPaymentResult.Status));
+                    opt => opt.MapFrom(
+                        src => src.BankPaymentResult.Status.ToString()))
+                .ForMember(dest => dest.TransactionId,
+                    opt => opt.MapFrom(src => src.BankPaymentResult.TransactionId));
         }
     }
 }

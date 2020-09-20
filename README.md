@@ -102,4 +102,5 @@ This layer contains the implementation of data persistence and repository.
 1. Instead of feeding data from the external API, it can be better to have the publish/subscriber pattern. When something has changed on the show and cast side they can publish an event that will be executed by a subscription in the reading model. It can also be the same as the [CQRS](https://learning.oreilly.com/library/view/designing-event-driven-systems/9781492038252/ch07.html) implementation.
 2. The index is missing in MongoDB.
 3. The application was not covered with the unit tests as a whole due to the time limitation.
-4. And so on...
+4. The payment gateway system can be implemented more resiliently through the combination **[Sagas](https://learning.oreilly.com/library/view/microservices-patterns/9781617294549/kindle_split_012.html)**, **[event sourcing](https://learning.oreilly.com/library/view/microservices-patterns/9781617294549/kindle_split_014.html)** and the help of a broker to address the lack of transactions in a distributed system..
+5. And so on...

@@ -32,15 +32,6 @@
         }
 
         [Theory]
-        [InlineData(null)]
-        [InlineData(10)]
-        public void When_Currency_Is_Not_Valid_Then_Fail(Currency? currency)
-        {
-            _paymentRequestValidator
-                .ShouldHaveValidationErrorFor(x => x.Currency, currency);
-        }
-
-        [Theory]
         [InlineData(Currency.Euro)]
         [InlineData(Currency.Usd)]
         public void When_Currency_Is_Valid_Then_Pass(Currency currency)
