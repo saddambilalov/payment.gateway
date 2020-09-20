@@ -23,6 +23,37 @@ docker-compose -f docker-compose.development.yml up --remove-orphans --force-rec
 ## Decisions on the development side ##
 
 ### [The API](https://github.com/saddambilalov/payment.gateway/tree/master/src/Api/Payment.Gateway.Api)
+The validation was implemented with [Fluent Validation](https://fluentvalidation.net/).
+**The sample query:**
+```sh
+curl --location --request POST 'http://localhost:3015/api/PaymentGateway' \
+
+--header 'Authorization: 285c0a57-d2f7-47fc-9e54-fc61d0d15fa3' \
+
+--header 'Content-Type: application/json' \
+
+--data-raw '{
+
+"amount": 0.1,
+
+"currency": 1,
+
+"merchant": "Amazon",
+
+"cardDetails": {
+
+"cardNumber": "5500000000000004",
+
+"cardExpiryYear": 2020,
+
+"cardExpiryMonth": 12,
+
+"cvv": 111
+
+}
+
+}'
+```
 
 **[The API Abstraction Layer](https://github.com/saddambilalov/payment.gateway/tree/master/src/Api/Payment.Gateway.Api.Abstractions)** 
 
